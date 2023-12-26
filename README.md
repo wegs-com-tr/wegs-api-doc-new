@@ -12,7 +12,7 @@
 ## - Cari Bilgilerini Gönderme API'si
 
 ## Açıklama
-Bu API, müşteri (cari) ve ürün bilgilerini sisteme göndermek için kullanılır.
+Bu API, müşteri (cari) bilgilerini sisteme göndermek için kullanılır.
 - client_id: Panelde Solda Client id mevcut.
 - api_key: Ayarlar -> lisanslar bölümünde.
 
@@ -31,13 +31,13 @@ POST https://wegs.dev/V2/customers
 ####  Cari Bilgileri:
 - phone (string): Carinin telefon numarası. (Sıfır olmadan)
 - mail (string, nullable): Carinin e-mail adresi.
-- tcvkn (string, nullable): Müşterinin TCsi yada vkn si.
+- tcvkn (string, nullable): Müşterinin TCsi yada vkn si.ZORUNLU ***
 - customer_title (string, nullable): Cari unvanı. ZORUNLU ***
 - tag (string, nullable): Carinin kısa ismi.
 - cari_group (string, nullable): Cari grubu.
 - cari_code (string, nullable): Cari kodu.
 - vd (string, nullable): Vergi Dairesi.
-- billing_address (string): Fatura adresi.
+- billing_address (string): Fatura adresi. ZORUNLU ***
 - delivery_address (string, nullable): Teslimat adresi.
 - city (string): Şehir.
 - district (string): İlçe.
@@ -73,6 +73,8 @@ POST https://wegs.dev/V2/customers
   },
 }
 ```
+
+## - Cari Bilgilerini Listeleme API'si
 Endpoint:
 ```http
 GET https://wegs.dev/V2/customers
@@ -138,6 +140,139 @@ POST https://wegs.dev/V2/products
 
 
 ```
+## - Ürün Bilgilerini Listeleme API'si
+Endpoint:
+```http
+GET https://wegs.dev/V2/products
+```
+
+### Headers
+
+- `Content-Type`: application/json
+- `client_id`: Your client ID
+- `api_key`: Your API key
+
+####  Örnek post JSON
+
+```json
+{
+  "Action": {
+    "type": "list"
+  },
+}
+```
+
+## - Satış Bilgilerini Gönderme API'si
+Endpoint:
+```http
+POST https://wegs.dev/V2/sales
+```
+
+### Headers
+
+- `Content-Type`: application/json
+- `client_id`: Your client ID
+- `api_key`: Your API key
+
+####  Request Body:
+####  Satış Bilgileri:
+- title (string): Satış başlığı.
+- invoiceNumber (string): Satış numarası (ZORUNLU ***)
+- invoiceTo_id(string) : Cari oid  (ZORUNLU ***)
+- invoiceDate (string): Satış Tarihi. (ZORUNLU ***)
+- invoiceExchange(string): Para birimi türü (ZORUNLU ***) 
+- invoiceExchangeRate (float) : Para Birimi kuru(TL Kur:1, Diğer döviz cinsleri günlük kur değeri) (ZORUNLU ***) 
+- employee_id (string) : Çalışan oid
+- notesStatus (string): true veya false (ZORUNLU ***) 
+- note (string): Satış notu 
+- subTotal (float): Vergisiz toplam (ZORUNLU ***) 
+- taxTotal (float): Vergiler toplamı (ZORUNLU ***) 
+- discountTotal (float): İndirimler toplamı (ZORUNLU ***) 
+- total (float): Satışın toplam değeri (ZORUNLU ***) 
+- product_id (string): Ürün oid. (ZORUNLU ***) 
+- invoice_stocktracking (int): Stok takibi yapılıp yapılmayacağı. ('true': Yapılacak, 'false': Yapılmayacak) (ZORUNLU ***) 
+- invoice_unit (string): Ürün birim türü. (Örneğin: Adet, Kg, Litre) (ZORUNLU ***) 
+- invoice_amount (int): Fatura kalemindeki adet. (ZORUNLU ***) 
+- invoice_unit_price (float): Ürün birim fiyatı. (ZORUNLU ***) 
+- invoice_unit_currency (string): Para birimi türü (Satış para birimi ile aynı olmak zorunda). (ZORUNLU ***) 
+- invoice_tax (int): Vergi yüzdesi. (%10, %20) (ZORUNLU ***) 
+- invoice_discount_amount (float): Fatura kalemindeki indirim tutarı.
+- invoice_discount_type (string): Fatura kalemindeki indirim tipi. ('0'->Fiyat bazında indirim. Örneğin; 100 TL. '1'->Yüzdelik indirim. Örneğin; %10) (ZORUNLU ***) 
+- invoice_tax_not_included (float): Fatura kalemindeki verigisiz toplam tutar. (ZORUNLU ***) 
+- invoice_tax_amount (float): Fatura kalemindeki vergilerin toplam tutarı. (ZORUNLU ***) 
+- invoice_total (float): Fatura kalemindeki toplam tutar. (ZORUNLU ***) 
+
+##### Lütfen stok kodu yazıyorsanız gerçek olsun sonradan gelen istekler stok koduna göre işlem yapacak. yoksa sadece isim göndermeniz yeterli.
+
+####  Örnek post JSON
+
+```json
+{
+  "Action": {
+    "type": "create"
+  },
+  "Satis": [
+    {
+        "title": null,
+        "invoiceNumber": "2023081528",
+        "invoiceTo_id": "64e3574c9c7c7079480768fa",
+        "invoiceDate": "21-08-2023",
+        "invoiceExchange": "TRY",
+        "invoiceExchangeRate": 1,
+        "employee_id": null,
+        "notesStatus": "true",
+        "note": "Siz ve ekibinizle çalışmak bir zevkti. Teşekkür ederiz!",
+        "subTotal": 791.67,
+        "taxTotal": 116.73,
+        "discountTotal": 208,
+        "total": 700.4,
+        "invoiceForm": [
+            {
+                "product_id": "64e357b1bd1220f3ba0945dc",
+                "invoice_stocktracking": "false",
+                "invoice_unit": "Adet",
+                "invoice_amount": 1,
+                "invoice_unit_price": 791666,
+                "invoice_unit_currency": "TRY",
+                "invoice_store": null,
+                "invoice_tax": 20,
+                "invoice_discount_amount": 208,
+                "invoice_discount_type": "0",
+                "invoice_tax_not_included": 583.67,
+                "invoice_tax_amount": 116.73,
+                "invoice_total": 700.4,
+            }
+          ],
+        }
+      ]
+    }
+
+
+```
+## - Satış Bilgilerini Listeleme API'si
+Endpoint:
+```http
+GET https://wegs.dev/V2/sales
+```
+
+### Headers
+
+- `Content-Type`: application/json
+- `client_id`: Your client ID
+- `api_key`: Your API key
+
+####  Örnek post JSON
+
+```json
+{
+  "Action": {
+    "type": "list"
+  },
+}
+```
+
+
+
 
 ## API Kullanım Örneği
 

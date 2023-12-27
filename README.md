@@ -67,7 +67,7 @@ POST https://wegs.dev/V2/customers
     "city": "Ankara",
     "district": "Yenimahalle",
     "country": "TR",
-    "state": "Ankara",
+    "state": null,
     "post_code": "6000",
     "note": ""
   },

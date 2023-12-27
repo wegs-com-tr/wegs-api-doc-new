@@ -123,8 +123,7 @@ POST https://wegs.dev/V2/products
   "Action": {
     "type": "create"
   },
-  "Urun": [
-    {
+  "Urun": {
       "barcode": "",
       "stock_code": "stokkodu",
       "product_name": "Kahve",
@@ -135,7 +134,6 @@ POST https://wegs.dev/V2/products
       "unit_type": "Adet",
       "quantity": 0
     }
-  ]
 }
 
 
@@ -211,11 +209,10 @@ POST https://wegs.dev/V2/sales
   "Action": {
     "type": "create"
   },
-  "Satis": [
-    {
+  "Satis": {
         "title": null,
         "invoiceNumber": "2023081528",
-        "invoiceTo_id": "64e3574c9c7c7079480768fa",
+        "invoiceTo_id": "654a592872edb6c3d60ca95e",
         "invoiceDate": "21-08-2023",
         "invoiceExchange": "TRY",
         "invoiceExchangeRate": 1,
@@ -228,7 +225,7 @@ POST https://wegs.dev/V2/sales
         "total": 700.4,
         "invoiceForm": [
             {
-                "product_id": "64e357b1bd1220f3ba0945dc",
+                "product_id": "64d38f643e5e78eeb8072026",
                 "invoice_stocktracking": "false",
                 "invoice_unit": "Adet",
                 "invoice_amount": 1,
@@ -240,11 +237,10 @@ POST https://wegs.dev/V2/sales
                 "invoice_discount_type": "0",
                 "invoice_tax_not_included": 583.67,
                 "invoice_tax_amount": 116.73,
-                "invoice_total": 700.4,
+                "invoice_total": 700.4
             }
-          ],
+          ]
         }
-      ]
     }
 
 

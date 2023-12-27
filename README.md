@@ -195,8 +195,9 @@ POST https://wegs.dev/V2/sales
 - invoice_unit_currency (string): Para birimi türü (Satış para birimi ile aynı olmak zorunda). (ZORUNLU ***) 
 - invoice_tax (int): Vergi yüzdesi. (%10, %20) (ZORUNLU ***) 
 - invoice_discount_amount (float): Fatura kalemindeki indirim tutarı.
+- invoice_discount (float): Fatura kalemindeki indirim tutarı. (invoice_discount_amount ile eşit değer, invoice_discount_amount varsa zorunlu)
 - invoice_discount_type (string): Fatura kalemindeki indirim tipi. ('0'->Fiyat bazında indirim. Örneğin; 100 TL. '1'->Yüzdelik indirim. Örneğin; %10) (ZORUNLU ***) 
-- invoice_tax_not_included (float): Fatura kalemindeki verigisiz toplam tutar. (ZORUNLU ***) 
+- invoice_tax_not_included (float): Fatura kalemindeki vergisiz toplam tutar. (ZORUNLU ***) 
 - invoice_tax_amount (float): Fatura kalemindeki vergilerin toplam tutarı. (ZORUNLU ***) 
 - invoice_total (float): Fatura kalemindeki toplam tutar. (ZORUNLU ***) 
 
@@ -234,6 +235,7 @@ POST https://wegs.dev/V2/sales
                 "invoice_store": null,
                 "invoice_tax": 20,
                 "invoice_discount_amount": 208,
+                "invoice_discount": 208,
                 "invoice_discount_type": "0",
                 "invoice_tax_not_included": 583.67,
                 "invoice_tax_amount": 116.73,

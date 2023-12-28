@@ -8,6 +8,9 @@
     
 ## API Dokümantasyonu
 
+## - Ücretsiz Kayıt Olmak İçin Tıkla 
+
+- Wegs' Ücretsiz Tıkla Kaydol (https://app.wegs.com.tr/)
 
 ## - Cari Bilgilerini Gönderme API'si
 
@@ -179,7 +182,8 @@ POST https://wegs.dev/V2/sales
 - invoiceTo_id(string) : Cari oid  (ZORUNLU ***)
 - invoiceDate (string): Satış Tarihi. (ZORUNLU ***)
 - invoiceExchange(string): Para birimi türü (ZORUNLU ***) 
-- invoiceExchangeRate (float) : Para Birimi kuru(TL Kur:1, Diğer döviz cinsleri günlük kur değeri) (ZORUNLU ***) 
+- invoiceExchangeRate (float) : Para Birimi kuru(TL Kur:1, Diğer döviz cinsleri günlük kur değeri) (ZORUNLU ***)
+- specialArea (array): Satış Kanalı (ZORUNLU ***)
 - employee_id (string) : Çalışan oid
 - notesStatus (string): true veya false (ZORUNLU ***) 
 - note (string): Satış notu 
@@ -217,6 +221,7 @@ POST https://wegs.dev/V2/sales
         "invoiceDate": "21-08-2023",
         "invoiceExchange": "TRY",
         "invoiceExchangeRate": 1,
+        "salesChannel": "trendyol",
         "employee_id": null,
         "notesStatus": "true",
         "note": "Siz ve ekibinizle çalışmak bir zevkti. Teşekkür ederiz!",
@@ -240,6 +245,14 @@ POST https://wegs.dev/V2/sales
                 "invoice_tax_not_included": 583.67,
                 "invoice_tax_amount": 116.73,
                 "invoice_total": 700.4
+            }
+          ]
+          "specialArea": [
+            {
+                "salesChannel": {
+                    "trendyol",
+                    "hepsiburada"
+                }
             }
           ]
         }

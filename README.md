@@ -221,7 +221,6 @@ POST https://wegs.dev/V2/sales
         "invoiceDate": "21-08-2023",
         "invoiceExchange": "TRY",
         "invoiceExchangeRate": 1,
-        "salesChannel": "trendyol",
         "employee_id": null,
         "notesStatus": "true",
         "note": "Siz ve ekibinizle çalışmak bir zevkti. Teşekkür ederiz!",
@@ -246,13 +245,10 @@ POST https://wegs.dev/V2/sales
                 "invoice_tax_amount": 116.73,
                 "invoice_total": 700.4
             }
-          ]
+          ],
           "specialArea": [
             {
-                "salesChannel": {
-                    "trendyol",
-                    "hepsiburada"
-                }
+                "salesChannel": "trendyol,hepsiburada"
             }
           ]
         }

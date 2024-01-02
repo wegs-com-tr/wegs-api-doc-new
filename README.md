@@ -279,6 +279,34 @@ GET https://wegs.dev/V2/sales
 ```
 
 
+## - Fatura Oluşturma API'si
+Endpoint:
+```http
+POST https://wegs.dev/V2/invoice
+```
+
+####  Request Body:
+####  Fatura Bilgileri:
+- salesId (string): Faturasını oluşturmak istediğiniz oid.
+
+### Headers
+
+- `Content-Type`: application/json
+- `client_id`: Your client ID
+- `api_key`: Your API key
+
+####  Örnek post JSON
+
+```json
+{
+  "Action": {
+    "type": "create"
+  },
+  "Fatura": {
+        "salesId": "658e9c37197f4145d40e1b34"
+        }
+}
+```
 
 
 ## API Kullanım Örneği

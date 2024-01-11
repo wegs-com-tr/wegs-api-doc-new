@@ -278,6 +278,64 @@ GET https://wegs.dev/V2/sales
 }
 ```
 
+## - Hızlı Sipariş Oluşturma API'si
+Endpoint:
+```http
+POST https://wegs.dev/V2/fastorder
+```
+
+####  Örnek post JSON
+
+```json
+{
+  "Action": {
+    "type": "create"
+  },
+    "Cari": {
+    "phone": "5064723443",
+    "mail": null,
+    "customer_title": "Ornek API Musteri",
+    "tag": "Ornek",
+    "cari_group": null,
+    "cari_code": null,
+    "tcvkn": null,
+    "vd": null,
+    "billing_address": "12.CAD.30.SOK.34/6 DEMETEVLER",
+    "delivery_address": null,
+    "city": "Ankara",
+    "district": "Yenimahalle",
+    "country": "TR",
+    "state": null,
+    "post_code": "6000",
+    "note": ""
+  },
+  "Urun": [
+    {
+      "barcode": "",
+      "stock_code": "stokkodu",
+      "product_name": "Kahve",
+      "stock_tracking": 1,
+      "currency_type": "TRY",
+      "tax": 10,
+      "price_1": 85,
+      "unit_type": "Adet",
+      "quantity": 1
+    },
+    {
+      "barcode": "",
+      "stock_code": "stokkodu",
+      "product_name": "Filtre Kahve",
+      "stock_tracking": 1,
+      "currency_type": "TRY",
+      "tax": 20,
+      "price_1": 54,
+      "unit_type": "Adet",
+      "quantity": 3
+    }
+  ]
+}
+```
+
 
 ## - Fatura Oluşturma API'si
 Endpoint:

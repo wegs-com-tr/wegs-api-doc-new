@@ -135,7 +135,12 @@ POST https://wegs.dev/V2/products
       "tax": 0,
       "price_1": 0,
       "unit_type": "Adet",
-      "quantity": 0
+      "quantity": 0,
+      "specialArea": [
+            {
+                "salesChannel": "trendyol,hepsiburada"
+            }
+          ]
     }
 }
 
@@ -215,8 +220,7 @@ POST https://wegs.dev/V2/sales
     "type": "create"
   },
   "Satis": {
-        "title": null,
-        "invoiceNumber": "2023081528",
+        "title": "ApiSatis22",
         "invoiceTo_id": "654a592872edb6c3d60ca95e",
         "invoiceDate": "21-08-2023",
         "invoiceExchange": "TRY",
@@ -243,17 +247,16 @@ POST https://wegs.dev/V2/sales
                 "invoice_discount_type": "0",
                 "invoice_tax_not_included": 583.67,
                 "invoice_tax_amount": 116.73,
-                "invoice_total": 700.4
-            }
-          ],
-          "specialArea": [
-            {
-                "salesChannel": "trendyol,hepsiburada"
+                "invoice_total": 700.4,
+                "specialArea": [
+                    {
+                        "salesChannel": "trendyol,hepsiburada"
+                    }
+                ]
             }
           ]
         }
     }
-
 
 ```
 ## - Satış Bilgilerini Listeleme API'si
@@ -283,6 +286,9 @@ Endpoint:
 ```http
 POST https://wegs.dev/V2/fastorder
 ```
+####  Request Body:
+####  Fatura Bilgileri:
+- store_id (string): stock_tracking === 1 depo id zorunlu bir alandır.
 
 ####  Örnek post JSON
 
@@ -313,13 +319,19 @@ POST https://wegs.dev/V2/fastorder
     {
       "barcode": "",
       "stock_code": "stokkodu",
-      "product_name": "Kahve",
-      "stock_tracking": 1,
+      "product_name": "Latte",
+      "stock_tracking": 0,
       "currency_type": "TRY",
       "tax": 10,
       "price_1": 85,
       "unit_type": "Adet",
-      "quantity": 1
+      "quantity": 1,
+      "store_id": null,
+      "specialArea": [
+            {
+                "salesChannel": "hepsiburada"
+            }
+          ]
     },
     {
       "barcode": "",
@@ -330,10 +342,17 @@ POST https://wegs.dev/V2/fastorder
       "tax": 20,
       "price_1": 54,
       "unit_type": "Adet",
-      "quantity": 3
+      "quantity": 3,
+      "store_id": "64d0b02543b455171501b8c9",
+      "specialArea": [
+            {
+                "salesChannel": "trendyol"
+            }
+          ]
     }
   ]
 }
+
 ```
 
 

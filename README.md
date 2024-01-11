@@ -116,6 +116,7 @@ POST https://wegs.dev/V2/products
 - price_1 (float): Ürün fiyatı.
 - unit_type (string): Ürün birim türü. (Örneğin: Adet, Kg, Litre)
 - quantity (int): Fatura kalemindeki adet.
+- specialArea : max 2000 karakter sınırlaması vardır
 
 ##### Lütfen stok kodu yazıyorsanız gerçek olsun sonradan gelen istekler stok koduna göre işlem yapacak. yoksa sadece isim göndermeniz yeterli.
 
@@ -208,7 +209,8 @@ POST https://wegs.dev/V2/sales
 - invoice_discount_type (string): Fatura kalemindeki indirim tipi. ('0'->Fiyat bazında indirim. Örneğin; 100 TL. '1'->Yüzdelik indirim. Örneğin; %10) (ZORUNLU ***) 
 - invoice_tax_not_included (float): Fatura kalemindeki vergisiz toplam tutar. (ZORUNLU ***) 
 - invoice_tax_amount (float): Fatura kalemindeki vergilerin toplam tutarı. (ZORUNLU ***) 
-- invoice_total (float): Fatura kalemindeki toplam tutar. (ZORUNLU ***) 
+- invoice_total (float): Fatura kalemindeki toplam tutar. (ZORUNLU ***)
+- specialArea : max 2000 karakter sınırlaması vardır
 
 ##### Lütfen stok kodu yazıyorsanız gerçek olsun sonradan gelen istekler stok koduna göre işlem yapacak. yoksa sadece isim göndermeniz yeterli.
 
@@ -289,6 +291,7 @@ POST https://wegs.dev/V2/fastorder
 ####  Request Body:
 ####  Fatura Bilgileri:
 - store_id (string): stock_tracking === 1 depo id zorunlu bir alandır.
+- specialArea : max 2000 karakter sınırlaması vardır
 
 ####  Örnek post JSON
 

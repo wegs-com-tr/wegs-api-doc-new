@@ -113,10 +113,12 @@ POST https://wegs.dev/V2/products
 - stock_tracking (int): Stok takibi yapılıp yapılmayacağı. (1: Yapılacak, 0: Yapılmayacak)
 - currency_type (string): Para birimi türü.
 - tax (int): Vergi yüzdesi. (Zorunlu)
-- price_1 (float): Ürün fiyatı.
+- price_1 (float): Ürün parekende fiyatı.
+- price_2 (float): Ürün alış fiyatı. (null olabilir)
+- price_3,price_4,price_5,price_6,price_7,price_8 (float): Sizin belirleyeceğiniz fiyatlar. (null olabilir)
 - unit_type (string): Ürün birim türü. (Örneğin: Adet, Kg, Litre)
 - quantity (int): Fatura kalemindeki adet.
-- specialArea : max 2000 karakter sınırlaması vardır
+- specialArea : Ürün açıklaması. max 2000 karakter sınırlaması vardır.
 
 ##### Lütfen stok kodu yazıyorsanız gerçek olsun sonradan gelen istekler stok koduna göre işlem yapacak. yoksa sadece isim göndermeniz yeterli.
 
@@ -134,14 +136,17 @@ POST https://wegs.dev/V2/products
       "stock_tracking": 1,
       "currency_type": "TRY",
       "tax": 0,
-      "price_1": 0,
+      "price_1": 20,
+      "price_2": 10,
+      "price_3": null,
+      "price_4": null,
+      "price_5": null,
+      "price_6": null,
+      "price_7": null,
+      "price_8": null,
       "unit_type": "Adet",
       "quantity": 0,
-      "specialArea": [
-            {
-                "salesChannel": "trendyol,hepsiburada"
-            }
-          ]
+      "product_description": "Ürün bilgileri",
     }
 }
 
@@ -210,7 +215,7 @@ POST https://wegs.dev/V2/sales
 - invoice_tax_not_included (float): Fatura kalemindeki vergisiz toplam tutar. (ZORUNLU ***) 
 - invoice_tax_amount (float): Fatura kalemindeki vergilerin toplam tutarı. (ZORUNLU ***) 
 - invoice_total (float): Fatura kalemindeki toplam tutar. (ZORUNLU ***)
-- specialArea : max 2000 karakter sınırlaması vardır
+- specialArea : Satış kanal bilgisi, max 2000 karakter sınırlaması vardır
 
 ##### Lütfen stok kodu yazıyorsanız gerçek olsun sonradan gelen istekler stok koduna göre işlem yapacak. yoksa sadece isim göndermeniz yeterli.
 
@@ -234,6 +239,11 @@ POST https://wegs.dev/V2/sales
         "taxTotal": 116.73,
         "discountTotal": 208,
         "total": 700.4,
+        "specialArea": [
+            {
+               "salesChannel": "trendyol,hepsiburada"
+            }
+        ],
         "invoiceForm": [
             {
                 "product_id": "64d38f643e5e78eeb8072026",
@@ -249,12 +259,7 @@ POST https://wegs.dev/V2/sales
                 "invoice_discount_type": "0",
                 "invoice_tax_not_included": 583.67,
                 "invoice_tax_amount": 116.73,
-                "invoice_total": 700.4,
-                "specialArea": [
-                    {
-                        "salesChannel": "trendyol,hepsiburada"
-                    }
-                ]
+                "invoice_total": 700.4
             }
           ]
         }
@@ -291,7 +296,7 @@ POST https://wegs.dev/V2/fastorder
 ####  Request Body:
 ####  Fatura Bilgileri:
 - store_id (string): stock_tracking === 1 depo id zorunlu bir alandır.
-- specialArea : max 2000 karakter sınırlaması vardır
+- specialArea : Satış kanal bilgisi, max 2000 karakter sınırlaması vardır
 
 ####  Örnek post JSON
 
@@ -330,11 +335,7 @@ POST https://wegs.dev/V2/fastorder
       "unit_type": "Adet",
       "quantity": 1,
       "store_id": null,
-      "specialArea": [
-            {
-                "salesChannel": "hepsiburada"
-            }
-          ]
+      "product_description": "Ürün bilgileri",
     },
     {
       "barcode": "",
@@ -347,13 +348,14 @@ POST https://wegs.dev/V2/fastorder
       "unit_type": "Adet",
       "quantity": 3,
       "store_id": "64d0b02543b455171501b8c9",
-      "specialArea": [
-            {
-                "salesChannel": "trendyol"
-            }
-          ]
+      "product_description": "Ürün bilgileri",
     }
-  ]
+  ],
+  "specialArea": [
+    {
+       "salesChannel": "hepsiburada, trendyol"
+    }
+ ]
 }
 
 ```

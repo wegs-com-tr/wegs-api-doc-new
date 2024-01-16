@@ -187,7 +187,7 @@ GET https://wegs.dev/V2/categories
 - `api_key`: Your API key
 - 
 ####  Request Body:
-- Listeleme için 'category_type' alanının 'category' olarak kalması gerekmektedir.
+- category_type : Listeleme için 'category_type' alanının 'category' olarak kalması gerekmektedir.
   
 ####  Örnek post JSON
 
@@ -196,6 +196,35 @@ GET https://wegs.dev/V2/categories
   "Action": {
     "type": "list",
     "category_type": "category"
+  }
+}
+```
+
+
+## - İlgili Kategori Bilgilerini Görüntüleme
+Endpoint:
+```http
+POSt https://wegs.dev/V2/categories
+```
+
+### Headers
+
+- `Content-Type`: application/json
+- `client_id`: Your client ID
+- `api_key`: Your API key
+- 
+####  Request Body:
+- category_type : Listeleme için 'category_type' alanının 'category' olarak kalması gerekmektedir.
+- category_id : İlgili kategorinin oid'i. Ürünün category_id'si ile bu kategorinin bilgisine ulaşılabilir.
+  
+####  Örnek post JSON
+
+```json
+{
+  "Action": {
+    "type": "read",
+    "category_type": "category",
+    "category_id" : "65576ce69b50ce288e01e484"
   }
 }
 ```

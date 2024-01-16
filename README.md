@@ -174,7 +174,7 @@ GET https://wegs.dev/V2/products
 }
 ```
 
-## - Ürün Kategori Bilgilerini Listeleme
+## - Tüm Ürün Kategori Bilgilerini Listeleme
 Endpoint:
 ```http
 GET https://wegs.dev/V2/categories
@@ -185,9 +185,10 @@ GET https://wegs.dev/V2/categories
 - `Content-Type`: application/json
 - `client_id`: Your client ID
 - `api_key`: Your API key
+- 
 ####  Request Body:
-- category_type : category sadece ürün kategorilerini listelemek için gereklidir.
-
+- Listeleme için 'category_type' alanının 'category' olarak kalması gerekmektedir.
+  
 ####  Örnek post JSON
 
 ```json

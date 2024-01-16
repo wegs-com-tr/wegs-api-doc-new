@@ -12,7 +12,7 @@
 
 - Wegs' Ücretsiz Tıkla Kaydol (https://app.wegs.com.tr/)
 
-## - Cari Bilgilerini Gönderme API'si
+## - Cari Bilgilerini Gönderme
 
 ## Açıklama
 Bu API, müşteri (cari) bilgilerini sisteme göndermek için kullanılır.
@@ -73,11 +73,11 @@ POST https://wegs.dev/V2/customers
     "state": null,
     "post_code": "6000",
     "note": ""
-  },
+  }
 }
 ```
 
-## - Cari Bilgilerini Listeleme API'si
+## - Cari Bilgilerini Listeleme
 Endpoint:
 ```http
 GET https://wegs.dev/V2/customers
@@ -93,7 +93,7 @@ GET https://wegs.dev/V2/customers
 
 ```
 
-## - Ürün Bilgilerini Gönderme API'si
+## - Ürün Bilgilerini Gönderme
 Endpoint:
 ```http
 POST https://wegs.dev/V2/products
@@ -152,7 +152,7 @@ POST https://wegs.dev/V2/products
 
 
 ```
-## - Ürün Bilgilerini Listeleme API'si
+## - Ürün Bilgilerini Listeleme
 Endpoint:
 ```http
 GET https://wegs.dev/V2/products
@@ -170,11 +170,36 @@ GET https://wegs.dev/V2/products
 {
   "Action": {
     "type": "list"
-  },
+  }
 }
 ```
 
-## - Satış Bilgilerini Gönderme API'si
+## - Ürün Kategori Bilgilerini Listeleme
+Endpoint:
+```http
+GET https://wegs.dev/V2/categories
+```
+
+### Headers
+
+- `Content-Type`: application/json
+- `client_id`: Your client ID
+- `api_key`: Your API key
+####  Request Body:
+- category_type : category sadece ürün kategorilerini listelemek için gereklidir.
+
+####  Örnek post JSON
+
+```json
+{
+  "Action": {
+    "type": "list",
+    "category_type": "category"
+  }
+}
+```
+
+## - Satış Bilgilerini Gönderme
 Endpoint:
 ```http
 POST https://wegs.dev/V2/sales
@@ -266,7 +291,7 @@ POST https://wegs.dev/V2/sales
     }
 
 ```
-## - Satış Bilgilerini Listeleme API'si
+## - Satış Bilgilerini Listeleme 
 Endpoint:
 ```http
 GET https://wegs.dev/V2/sales
@@ -284,11 +309,11 @@ GET https://wegs.dev/V2/sales
 {
   "Action": {
     "type": "list"
-  },
+  }
 }
 ```
 
-## - Hızlı Sipariş Oluşturma API'si
+## - Hızlı Sipariş Oluşturma
 Endpoint:
 ```http
 POST https://wegs.dev/V2/fastorder
@@ -361,7 +386,7 @@ POST https://wegs.dev/V2/fastorder
 ```
 
 
-## - Fatura Oluşturma API'si
+## - Fatura Oluşturma
 Endpoint:
 ```http
 POST https://wegs.dev/V2/invoice

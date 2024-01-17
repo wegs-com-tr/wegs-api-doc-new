@@ -80,7 +80,7 @@ POST https://wegs.dev/V2/customers
 ## - Cari Bilgilerini Listeleme
 Endpoint:
 ```http
-GET https://wegs.dev/V2/customers
+POST https://wegs.dev/V2/customers
 ```
 ####  Örnek post JSON
 
@@ -109,16 +109,17 @@ POST https://wegs.dev/V2/products
 ####  Urun Bilgileri:
 - barcode (string): Ürün barkod numarası.
 - stock_code (string): Stok kodu.
-- product_name (string): Ürün adı.
+- product_name (string): Ürün adı. ZORUNLU ***
 - stock_tracking (int): Stok takibi yapılıp yapılmayacağı. (1: Yapılacak, 0: Yapılmayacak)
-- currency_type (string): Para birimi türü.
-- tax (int): Vergi yüzdesi. (Zorunlu)
+- currency_type (string): Para birimi türü. ZORUNLU ***
+- tax (int): Vergi yüzdesi. ZORUNLU ***
 - price_1 (float): Ürün parekende fiyatı.
 - price_2 (float): Ürün alış fiyatı. (null olabilir)
 - price_3,price_4,price_5,price_6,price_7,price_8 (float): Sizin belirleyeceğiniz fiyatlar. (null olabilir)
-- unit_type (string): Ürün birim türü. (Örneğin: Adet, Kg, Litre)
+- unit_type (string): Ürün birim türü. (Örneğin: Adet, Kg, Litre) ZORUNLU ***
 - quantity (int): Fatura kalemindeki adet.
-- specialArea : Ürün açıklaması. max 2000 karakter sınırlaması vardır.
+- product_description : Ürün açıklaması. max 2000 karakter sınırlaması vardır.
+- specialArea: Ürüne ait varyantlar, detaylı ürün bilgileri (Örneğin: Beden, renk, boy)
 
 ##### Lütfen stok kodu yazıyorsanız gerçek olsun sonradan gelen istekler stok koduna göre işlem yapacak. yoksa sadece isim göndermeniz yeterli.
 
@@ -132,7 +133,8 @@ POST https://wegs.dev/V2/products
   "Urun": {
       "barcode": "",
       "stock_code": "stokkodu",
-      "product_name": "Kahve",
+      "stock_group_code": "stokgrupkodu",
+      "product_name": "API Ozel Alan",
       "stock_tracking": 1,
       "currency_type": "TRY",
       "tax": 0,
@@ -147,6 +149,20 @@ POST https://wegs.dev/V2/products
       "unit_type": "Adet",
       "quantity": 0,
       "product_description": "Ürün bilgileri",
+      "specialArea": [
+        {
+          "item_name": "Renk",
+          "item_value": "Kırmızı"
+        },
+        {
+          "item_name": "Beden",
+          "item_value": "M"
+        },
+        {
+          "item_name": "Boy",
+          "item_value": "150"
+        }
+      ]
     }
 }
 
@@ -155,7 +171,7 @@ POST https://wegs.dev/V2/products
 ## - Ürün Bilgilerini Listeleme
 Endpoint:
 ```http
-GET https://wegs.dev/V2/products
+POST https://wegs.dev/V2/products
 ```
 
 ### Headers
@@ -177,7 +193,7 @@ GET https://wegs.dev/V2/products
 ## - Tüm Ürün Kategori Bilgilerini Listeleme
 Endpoint:
 ```http
-GET https://wegs.dev/V2/categories
+POST https://wegs.dev/V2/categories
 ```
 
 ### Headers
@@ -204,7 +220,7 @@ GET https://wegs.dev/V2/categories
 ## - İlgili Kategori Bilgilerini Görüntüleme
 Endpoint:
 ```http
-POSt https://wegs.dev/V2/categories
+POST https://wegs.dev/V2/categories
 ```
 
 ### Headers
@@ -324,7 +340,7 @@ POST https://wegs.dev/V2/sales
 ## - Satış Bilgilerini Listeleme 
 Endpoint:
 ```http
-GET https://wegs.dev/V2/sales
+POST https://wegs.dev/V2/sales
 ```
 
 ### Headers
@@ -351,6 +367,7 @@ POST https://wegs.dev/V2/fastorder
 ####  Request Body:
 ####  Fatura Bilgileri:
 - store_id (string): stock_tracking === 1 depo id zorunlu bir alandır.
+- Urun[specialArea] : Urun array'in de bulunan specialArea ürünün detaylı bilgisi içindir.
 - specialArea : Satış kanal bilgisi, max 2000 karakter sınırlaması vardır
 
 ####  Örnek post JSON
@@ -360,7 +377,7 @@ POST https://wegs.dev/V2/fastorder
   "Action": {
     "type": "create"
   },
-    "Cari": {
+  "Cari": {
     "phone": "5064723443",
     "mail": null,
     "customer_title": "Ornek API Musteri",
@@ -382,6 +399,7 @@ POST https://wegs.dev/V2/fastorder
     {
       "barcode": "",
       "stock_code": "stokkodu",
+      "stock_group_code": "stokgrupkodu",
       "product_name": "Latte",
       "stock_tracking": 0,
       "currency_type": "TRY",
@@ -391,10 +409,18 @@ POST https://wegs.dev/V2/fastorder
       "quantity": 1,
       "store_id": null,
       "product_description": "Ürün bilgileri",
+      "specialArea": [
+        {
+          "item_name": null,
+          "item_value": null
+        }
+       
+      ]
     },
     {
       "barcode": "",
       "stock_code": "stokkodu",
+      "stock_group_code": "stokgrupkodu",
       "product_name": "Filtre Kahve",
       "stock_tracking": 1,
       "currency_type": "TRY",
@@ -404,6 +430,12 @@ POST https://wegs.dev/V2/fastorder
       "quantity": 3,
       "store_id": "64d0b02543b455171501b8c9",
       "product_description": "Ürün bilgileri",
+      "specialArea": [
+        {
+          "item_name": "Boy",
+          "item_value": "917 ml"
+        }
+      ]
     }
   ],
   "specialArea": [
@@ -412,7 +444,6 @@ POST https://wegs.dev/V2/fastorder
     }
  ]
 }
-
 ```
 
 

@@ -32,8 +32,8 @@ POST https://wegs.dev/V2/customers
 
 ####  Request Body:
 ####  Cari Bilgileri:
-- phone (string): Carinin telefon numarası. (Sıfır olmadan)
-- mail (string, nullable): Carinin e-mail adresi.
+- phone (string): Carinin telefon numarası. (Sıfır olmadan) ZORUNLU ***
+- mail (string, nullable): Carinin e-mail adresi. ZORUNLU ***
 - tcvkn (string, nullable): Müşterinin TCsi yada vkn si.ZORUNLU ***
 - customer_title (string, nullable): Cari unvanı. ZORUNLU ***
 - tag (string, nullable): Carinin kısa ismi.
@@ -365,6 +365,24 @@ Endpoint:
 POST https://wegs.dev/V2/fastorder
 ```
 ####  Request Body:
+####  Cari Bilgileri:
+- phone (string): Carinin telefon numarası. (Sıfır olmadan) ZORUNLU ***
+- mail (string, nullable): Carinin e-mail adresi. ZORUNLU ***
+- tcvkn (string, nullable): Müşterinin TCsi yada vkn si.ZORUNLU ***
+- customer_title (string, nullable): Cari unvanı. ZORUNLU ***
+- tag (string, nullable): Carinin kısa ismi.
+- cari_group (string, nullable): Cari grubu.
+- cari_code (string, nullable): Cari kodu.
+- vd (string, nullable): Vergi Dairesi.
+- billing_address (string): Fatura adresi. ZORUNLU ***
+- delivery_address (string, nullable): Teslimat adresi.
+- city (string): Şehir.
+- district (string): İlçe.
+- country (string): Ülke kodu.
+- state (string): Eyalet/Bölge.
+- post_code (string): Posta kodu.
+- note (string): Not.
+
 ####  Fatura Bilgileri:
 - store_id (string): stock_tracking === 1 depo id zorunlu bir alandır.
 - Urun[specialArea] : Urun array'in de bulunan specialArea ürünün detaylı bilgisi içindir.

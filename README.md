@@ -359,7 +359,7 @@ POST https://wegs.dev/V2/sales
 }
 ```
 
-## - Hızlı Sipariş Oluşturma
+## - Hızlı Sipariş ve Parametreye Bağlı Fatura Oluşturma 
 Endpoint:
 ```http
 POST https://wegs.dev/V2/fastorder
@@ -383,10 +383,12 @@ POST https://wegs.dev/V2/fastorder
 - post_code (string): Posta kodu.
 - note (string): Not.
 
+
 ####  Fatura Bilgileri:
 - store_id (string): stock_tracking === 1 depo id zorunlu bir alandır.
 - Urun[specialArea] : Urun array'in de bulunan specialArea ürünün detaylı bilgisi içindir.
-- specialArea : Satış kanal bilgisi, max 2000 karakter sınırlaması vardır
+- specialArea : Satış kanal bilgisi, max 2000 karakter sınırlaması vardır,
+- makeInvoice(int) : Oluşturulan siparişin faturasını kesebilmek için belirlenen type. Sadece "(int) 1" gönderilmesi durumunda fatura oluşturulur. Aksi takdirde sadece satış bilgileri kaydedilir.   
 
 ####  Örnek post JSON
 
@@ -459,7 +461,8 @@ POST https://wegs.dev/V2/fastorder
   "specialArea": [
     {
        "salesChannel": "hepsiburada, trendyol"
-    }
+    },
+    "makeInvoice":1
  ]
 }
 ```

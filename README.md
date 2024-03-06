@@ -459,11 +459,11 @@ POST https://wegs.dev/V2/fastorder
     }
   ],
   "specialArea": [
-    {
-       "salesChannel": "hepsiburada, trendyol"
-    },
-    "makeInvoice":1
- ]
+        {
+           "salesChannel": "hepsiburada, trendyol"
+        },
+  ],
+  "makeInvoice":1
 }
 ```
 

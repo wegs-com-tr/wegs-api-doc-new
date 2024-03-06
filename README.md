@@ -465,6 +465,74 @@ POST https://wegs.dev/V2/fastorder
   ],
   "makeInvoice":1
 }
+
+
+{
+    "Action":
+    {
+        "type":"create"
+    },
+    "Cari":
+    {
+        "phone":"",
+        "mail":"",
+        "customer_title":"Ornek Musteri",
+        "cari_code":"",
+        "tcvkn":"11111111111",
+        "vd":"",
+        "billing_address":"Address",
+        "delivery_address":"Address",
+        "city":"City",
+        "district":"district",
+        "country":"Türkiye",
+        "post_code":"20150"
+    },
+    "Urun":
+    [
+        {
+            "barcode":"",
+            "stock_code":"Custom",
+            "product_name":"SIA Custom Metal",
+            "stock_tracking":0,
+            "currency_type":"TRY",
+            "tax":10,
+            "price_1": 2000,
+            "unit_type":"Adet",
+            "quantity": 1,
+            "store_id":"",
+            "product_description":"",
+            "specialArea": [
+                {
+                  "item_name": null,
+                  "item_value": null
+                }
+            ]
+        },
+        {
+          "barcode": "",
+          "stock_code": "stokkodu",
+          "stock_group_code": "stokgrupkodu",
+          "product_name": "Filtre Kahve",
+          "stock_tracking": 1,
+          "currency_type": "TRY",
+          "tax": 20,
+          "price_1": 54,
+          "unit_type": "Adet",
+          "quantity": 3,
+          "store_id": "64d0b02543b455171501b8c9",
+          "product_description": "Ürün bilgileri",
+          "specialArea": [
+            {
+              "item_name": "Boy",
+              "item_value": "917 ml"
+            }
+          ]
+        }
+    ],
+    "specialArea":[{"salesChannel":"perakende"}],
+    "makeInvoice":1
+}
+
 ```
 
 

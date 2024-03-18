@@ -44,7 +44,7 @@ POST https://wegs.dev/V2/customers
 - delivery_address (string, nullable): Teslimat adresi.
 - city (string): Şehir.
 - district (string): İlçe.
-- country (string): Ülke kodu.
+- country (string): Ülke kodu. Ülke kodları kısaltılmış formatta olmalı. Örneğin TR, US, DE, AU gibi. Aksi halde fatura oluştururken hata alabilirsiniz.
 - state (string): Eyalet/Bölge.
 - post_code (string): Posta kodu.
 - note (string): Not.
@@ -378,7 +378,7 @@ POST https://wegs.dev/V2/fastorder
 - delivery_address (string, nullable): Teslimat adresi.
 - city (string): Şehir.
 - district (string): İlçe.
-- country (string): Ülke kodu.
+- country (string): Ülke kodu. Ülke kodları kısaltılmış formatta olmalı. Örneğin TR, US, DE, AU gibi. Aksi halde fatura oluştururken hata alabilirsiniz.
 - state (string): Eyalet/Bölge.
 - post_code (string): Posta kodu.
 - note (string): Not.

@@ -33,9 +33,9 @@ POST https://wegs.dev/V2/customers
 ####  Request Body:
 ####  Cari Bilgileri:
 - phone (string): Carinin telefon numarası. (Sıfır olmadan) ZORUNLU ***
-- mail (string, nullable): Carinin e-mail adresi. ZORUNLU ***
-- tcvkn (string, nullable): Müşterinin TCsi yada vkn si.ZORUNLU ***
-- customer_title (string, nullable): Cari unvanı. ZORUNLU ***
+- mail (string): Carinin e-mail adresi. ZORUNLU ***
+- tcvkn (string): Müşterinin TCsi yada vkn si.ZORUNLU ***
+- customer_title (string): Cari unvanı. ZORUNLU ***
 - tag (string, nullable): Carinin kısa ismi.
 - cari_group (string, nullable): Cari grubu.
 - cari_code (string, nullable): Cari kodu.
@@ -58,7 +58,7 @@ POST https://wegs.dev/V2/customers
   },
   "Cari": {
     "phone": "5064723443",
-    "mail": null,
+    "mail": "example@mail.com",
     "customer_title": "Ornek Musteri",
     "tag": "Ornek",
     "cari_group": null,
@@ -367,9 +367,9 @@ POST https://wegs.dev/V2/fastorder
 ####  Request Body:
 ####  Cari Bilgileri:
 - phone (string): Carinin telefon numarası. (Sıfır olmadan) ZORUNLU ***
-- mail (string, nullable): Carinin e-mail adresi. ZORUNLU ***
-- tcvkn (string, nullable): Müşterinin TCsi yada vkn si.ZORUNLU ***
-- customer_title (string, nullable): Cari unvanı. ZORUNLU ***
+- mail (string): Carinin e-mail adresi. ZORUNLU ***
+- tcvkn (string): Müşterinin TCsi yada vkn si. ZORUNLU ***
+- customer_title (string): Cari unvanı. ZORUNLU ***
 - tag (string, nullable): Carinin kısa ismi.
 - cari_group (string, nullable): Cari grubu.
 - cari_code (string, nullable): Cari kodu.
@@ -385,8 +385,8 @@ POST https://wegs.dev/V2/fastorder
 
 
 ####  Fatura Bilgileri:
-- store_id (string): stock_tracking === 1 depo id zorunlu bir alandır.
-- Urun[specialArea] : Urun array'in de bulunan specialArea ürünün detaylı bilgisi içindir.
+- store_id (string): stock_tracking === 1 ise depo id zorunlu bir alandır.
+- Urun[specialArea] : Urun array'in de bulunan specialArea, ürünün detaylı bilgisi içindir.
 - specialArea : Satış kanal bilgisi, max 2000 karakter sınırlaması vardır,
 - makeInvoice(int) : Oluşturulan siparişin faturasını kesebilmek için belirlenen type. Sadece "(int) 1" gönderilmesi durumunda fatura oluşturulur. Aksi takdirde sadece satış bilgileri kaydedilir.   
 
@@ -394,88 +394,14 @@ POST https://wegs.dev/V2/fastorder
 
 ```json
 {
-  "Action": {
-    "type": "create"
-  },
-  "Cari": {
-    "phone": "5064723443",
-    "mail": null,
-    "customer_title": "Ornek API Musteri",
-    "tag": "Ornek",
-    "cari_group": null,
-    "cari_code": null,
-    "tcvkn": null,
-    "vd": null,
-    "billing_address": "12.CAD.30.SOK.34/6 DEMETEVLER",
-    "delivery_address": null,
-    "city": "Ankara",
-    "district": "Yenimahalle",
-    "country": "TR",
-    "state": null,
-    "post_code": "6000",
-    "note": ""
-  },
-  "Urun": [
-    {
-      "barcode": "",
-      "stock_code": "stokkodu",
-      "stock_group_code": "stokgrupkodu",
-      "product_name": "Latte",
-      "stock_tracking": 0,
-      "currency_type": "TRY",
-      "tax": 10,
-      "price_1": 85,
-      "unit_type": "Adet",
-      "quantity": 1,
-      "store_id": null,
-      "product_description": "Ürün bilgileri",
-      "specialArea": [
-        {
-          "item_name": null,
-          "item_value": null
-        }
-       
-      ]
-    },
-    {
-      "barcode": "",
-      "stock_code": "stokkodu",
-      "stock_group_code": "stokgrupkodu",
-      "product_name": "Filtre Kahve",
-      "stock_tracking": 1,
-      "currency_type": "TRY",
-      "tax": 20,
-      "price_1": 54,
-      "unit_type": "Adet",
-      "quantity": 3,
-      "store_id": "64d0b02543b455171501b8c9",
-      "product_description": "Ürün bilgileri",
-      "specialArea": [
-        {
-          "item_name": "Boy",
-          "item_value": "917 ml"
-        }
-      ]
-    }
-  ],
-  "specialArea": [
-        {
-           "salesChannel": "hepsiburada, trendyol"
-        },
-  ],
-  "makeInvoice":1
-}
-
-
-{
     "Action":
     {
         "type":"create"
     },
     "Cari":
     {
-        "phone":"",
-        "mail":"",
+        "phone":"5456571256",
+        "mail":"example@mail.com",
         "customer_title":"Ornek Musteri",
         "cari_code":"",
         "tcvkn":"11111111111",
@@ -484,7 +410,7 @@ POST https://wegs.dev/V2/fastorder
         "delivery_address":"Address",
         "city":"City",
         "district":"district",
-        "country":"Türkiye",
+        "country":"TR",
         "post_code":"20150"
     },
     "Urun":
@@ -544,7 +470,7 @@ POST https://wegs.dev/V2/invoice
 
 ####  Request Body:
 ####  Fatura Bilgileri:
-- salesId (string): Faturasını oluşturmak istediğiniz oid.
+- salesId (string): Faturasını oluşturmak istediğiniz satışın oid.
 
 ### Headers
 

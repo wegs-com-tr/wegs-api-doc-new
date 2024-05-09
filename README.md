@@ -362,7 +362,6 @@ POST https://wegs.dev/V2/sales
 }
 ```
 
-```
 ## - Gelen Faturaların Listelenmesi
 Endpoint:
 ```http

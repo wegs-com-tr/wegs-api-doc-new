@@ -8,6 +8,8 @@
     
 ## API Dokümantasyonu
 
+<a href="https://wegs.com.tr">Muhasebe Programı</a>
+
 ## - Ücretsiz Kayıt Olmak İçin Tıkla 
 
 - Wegs' Ücretsiz Tıkla Kaydol (https://app.wegs.com.tr/)
@@ -190,6 +192,7 @@ POST https://wegs.dev/V2/products
 }
 ```
 
+
 ## - Tüm Ürün Kategori Bilgilerini Listeleme
 Endpoint:
 ```http
@@ -341,6 +344,29 @@ POST https://wegs.dev/V2/sales
 Endpoint:
 ```http
 POST https://wegs.dev/V2/sales
+```
+
+### Headers
+
+- `Content-Type`: application/json
+- `client_id`: Your client ID
+- `api_key`: Your API key
+
+####  Örnek post JSON
+
+```json
+{
+  "Action": {
+    "type": "list"
+  }
+}
+```
+
+```
+## - Gelen Faturaların Listelenmesi
+Endpoint:
+```http
+POST https://wegs.dev/V2/incominginvoice
 ```
 
 ### Headers

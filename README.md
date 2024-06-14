@@ -412,6 +412,7 @@ POST https://wegs.dev/V3/fastorder
 ####  Fatura Bilgileri:
 - store_id(string): stock_tracking === 1 ise depo id zorunlu bir alandır. 0 gönderilmesi durumunda ilgili ürünün stok takibi yapılmaz ve depo id bilgisi zorunlu bir alan olmaz ve null olabilir.
 - Urun[specialArea] : Urun array'in de bulunan specialArea, ürünün detaylı bilgisi içindir.
+- Urun[price_1] : Urun array'in de bulunan price_1, ürünün KDV dahil birim fiyatıdır. KDV hariç birim fiyat girdiğiniz takdirde faturanız yanlış hesaplanacaktır. 
 - specialArea : Satış kanal bilgisi, max 2000 karakter sınırlaması vardır,
 - taxExemption(string||null) : KDV oranı 0 veya 1 olduğu zaman KDV istisnası göndermek zorunludur. 8, 10, 20 gibi oranlarda null gönderilebilir. 
 - makeInvoice(int) : Oluşturulan siparişin faturasını kesebilmek için belirlenen type. Sadece "(int) 1" gönderilmesi durumunda fatura oluşturulur. Aksi takdirde sadece satış bilgileri kaydedilir.   

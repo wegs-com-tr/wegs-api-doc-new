@@ -70,7 +70,7 @@ POST https://wegs.dev/V3/fastorder
         "city":"City",
         "district":"district",
         "country":"TR",
-        "note" => "",
+        "note": "",
         "post_code":"20150"
     },
     "Urun":

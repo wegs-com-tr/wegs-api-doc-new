@@ -387,7 +387,7 @@ POST https://wegs.dev/V2/incominginvoice
 ## - Hızlı Sipariş ve Parametreye Bağlı Fatura Oluşturma 
 Endpoint:
 ```http
-POST https://wegs.dev/V2/fastorder
+POST https://wegs.dev/V3/fastorder
 ```
 ####  Request Body:
 ####  Cari Bilgileri:
@@ -406,11 +406,11 @@ POST https://wegs.dev/V2/fastorder
 - country (string): Ülke kodu. Ülke kodları kısaltılmış formatta olmalı. Örneğin TR, US, DE, AU gibi. Aksi halde fatura oluştururken hata alabilirsiniz.
 - state (string): Eyalet/Bölge.
 - post_code (string): Posta kodu.
-- note (string): Not.
+- note (string): Cari notu. Fatura oluşturulurken bu not bilgisi dikkate alınır.
 
 
 ####  Fatura Bilgileri:
-- store_id (string): stock_tracking === 1 ise depo id zorunlu bir alandır.
+- store_id(string): stock_tracking === 1 ise depo id zorunlu bir alandır. 0 gönderilmesi durumunda ilgili ürünün stok takibi yapılmaz ve depo id bilgisi zorunlu bir alan olmaz ve null olabilir.
 - Urun[specialArea] : Urun array'in de bulunan specialArea, ürünün detaylı bilgisi içindir.
 - specialArea : Satış kanal bilgisi, max 2000 karakter sınırlaması vardır,
 - taxExemption(string||null) : KDV oranı 0 veya 1 olduğu zaman KDV istisnası göndermek zorunludur. 8, 10, 20 gibi oranlarda null gönderilebilir. 
@@ -430,6 +430,7 @@ POST https://wegs.dev/V2/fastorder
         "mail":"example@mail.com",
         "customer_title":"Ornek Musteri",
         "cari_code":"",
+        "cari_group":"Wegs Müşterileri",
         "tcvkn":"11111111111",
         "vd":"",
         "billing_address":"Address",

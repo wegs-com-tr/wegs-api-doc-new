@@ -58,6 +58,7 @@ POST https://wegs.dev/V3/fastorder
     "Cari":
     {
         "phone":"5456571256",
+        "tag":"",
         "mail":"example@mail.com",
         "customer_title":"Ornek Musteri",
         "cari_code":"",
@@ -69,6 +70,7 @@ POST https://wegs.dev/V3/fastorder
         "city":"City",
         "district":"district",
         "country":"TR",
+        "note" => "",
         "post_code":"20150"
     },
     "Urun":

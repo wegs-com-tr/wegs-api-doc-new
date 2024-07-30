@@ -44,8 +44,9 @@ POST https://wegs.dev/V3/fastorder
 - Urun[specialArea] : Urun array'in de bulunan specialArea, ürünün detaylı bilgisi içindir.
 - Urun[price_1] : Urun array'in de bulunan price_1, ürünün KDV dahil birim fiyatıdır. KDV hariç birim fiyat girdiğiniz takdirde faturanız yanlış hesaplanacaktır. 
 - specialArea : Satış kanal bilgisi, max 2000 karakter sınırlaması vardır,
-- taxExemption(string||null) : KDV oranı 0 veya 1 olduğu zaman KDV istisnası göndermek zorunludur. 8, 10, 20 gibi oranlarda null gönderilebilir. 
-- makeInvoice(int) : Oluşturulan siparişin faturasını kesebilmek için belirlenen type. Sadece "(int) 1" gönderilmesi durumunda fatura oluşturulur. Aksi takdirde sadece satış bilgileri kaydedilir.   
+- taxExemption(string||null) : KDV oranı 0 veya 1 olduğu zaman KDV istisnası göndermek zorunludur. 8, 10, 20 gibi oranlarda null gönderilebilir.
+- testInvoice(int) : Oluşturulan siparişin test fatura bilgileri için belirlenen type. Sadece "(int) 1" gönderilmesi durumunda test fatura bilglieri return döner. (1 veya 0)
+- makeInvoice(int) : Oluşturulan siparişin faturasını kesebilmek için belirlenen type. Sadece "(int) 1" gönderilmesi durumunda fatura oluşturulur. Aksi takdirde sadece satış bilgileri kaydedilir.(1 veya 0)   
 
 ####  Örnek post JSON
 
@@ -117,7 +118,8 @@ POST https://wegs.dev/V3/fastorder
     ],
     "specialArea":[{"salesChannel":"perakende"}],
     "taxExemption": "301 - 11/1-a Mal İhracatı",
-    "makeInvoice":1
+    "testInvoice":1,
+    "makeInvoice":1,
 }
 
 ```

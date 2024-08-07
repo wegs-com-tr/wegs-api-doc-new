@@ -46,6 +46,7 @@ POST https://wegs.dev/V3/fastorder
 - specialArea : Satış kanal bilgisi, max 2000 karakter sınırlaması vardır,
 - taxExemption(string||null) : KDV oranı 0 veya 1 olduğu zaman KDV istisnası göndermek zorunludur. 8, 10, 20 gibi oranlarda null gönderilebilir.
 - billDate(string||null) : Geçmiş tarihli fatura kesilmek istendiğinde gönderilir. Gönderilmediği takdirde istek atılan tarih dikkate alınır. String d-m-Y formatında gönderilmesi zorunludur.
+- billTime(string||null) : Geçmiş tarihli fatura kesilmek istendiğinde gönderilir. Gönderilmediği takdirde istek atılan zaman dikkate alınır. String H:i:s formatında gönderilmesi zorunludur.
 - testInvoice(int) : Oluşturulan siparişin test fatura bilgileri için belirlenen type. Sadece "(int) 1" gönderilmesi durumunda test fatura bilglieri return döner. (1 veya 0)
 - makeInvoice(int) : Oluşturulan siparişin faturasını kesebilmek için belirlenen type. Sadece "(int) 1" gönderilmesi durumunda fatura oluşturulur. Aksi takdirde sadece satış bilgileri kaydedilir.(1 veya 0)   
 
@@ -120,6 +121,7 @@ POST https://wegs.dev/V3/fastorder
     "specialArea":[{"salesChannel":"perakende"}],
     "taxExemption": "301 - 11/1-a Mal İhracatı",
     "billDate":"05-08-2024",
+    "billTime":"10:10:24",
     "testInvoice":1,
     "makeInvoice":1,
 }

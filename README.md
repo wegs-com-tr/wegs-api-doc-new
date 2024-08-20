@@ -49,6 +49,9 @@ POST https://wegs.dev/V3/fastorder
 - billTime(string||null) : Geçmiş tarihli fatura kesilmek istendiğinde gönderilir. Gönderilmediği takdirde istek atılan zaman dikkate alınır. String H:i:s formatında gönderilmesi zorunludur.
 - testInvoice(int) : Oluşturulan siparişin test fatura bilgileri için belirlenen type. Sadece "(int) 1" gönderilmesi durumunda test fatura bilglieri return döner. (1 veya 0)
 - makeInvoice(int) : Oluşturulan siparişin faturasını kesebilmek için belirlenen type. Sadece "(int) 1" gönderilmesi durumunda fatura oluşturulur. Aksi takdirde sadece satış bilgileri kaydedilir.(1 veya 0)   
+- isRefund(int) : Oluşturulan siparişin iade faturasını kesebilmek için belirlenen type. Sadece "(int) 1" gönderilmesi durumunda iade faturası oluşturulur. Aksi takdirde sadece satış bilgileri kaydedilir.(1 veya 0)
+- refundBillId(string) : İadesi kesilecek faturanın ID bilgisi. İade faturası oluşturulacaksa zorunludur.
+- refundBillDate(string) : İadesi kesilecek faturanın tarihi. İade faturası oluşturulacaksa zorunlu ve d-m-Y formatında gönderilmesi gereklidir.
 
 ####  Örnek post JSON
 
@@ -124,6 +127,9 @@ POST https://wegs.dev/V3/fastorder
     "billTime":"10:10:24",
     "testInvoice":1,
     "makeInvoice":1,
+    "isRefund": 0,
+    "refundBillId": "",
+    "refundBillDate" : "05-08-2024"
 }
 
 ```

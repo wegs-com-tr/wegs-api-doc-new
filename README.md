@@ -134,6 +134,26 @@ POST https://wegs.dev/V3/fastorder
 
 ```
 
+####  RESPONSE
+
+```json
+{
+    "return": true,
+    "sale": {
+        "ID": "673daa0686f80188d4089788",
+        "returnType": "Sales"
+    },
+    "invoice": {
+        "return": true,
+        "invoice_id": "FT02024000000010",
+        "invoice_uuid": "40708075-6F6C-4C6B-8AF8-19DC17EAACD7",
+        "invoice_env_uuid": "4cac9bbd-7420-4d9d-a02b-4d6002db73f7",
+        "invoice_cust_inv_id": "40708075-6F6C-4C6B-8AF8-19DC17EAACD7",
+        "count": 1
+    }
+}
+
+```
 
 ## Vergi Muafiyet Sebebi (Baştaki Kodları İle Beraber Gönderilmelidir. Orn; 101 - İhracat İstisnası)
 ```json

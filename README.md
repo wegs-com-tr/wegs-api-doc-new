@@ -155,6 +155,16 @@ POST https://wegs.dev/V3/fastorder
 
 ```
 
+### Fatura PDF Read
+- client_id(string): Sizin client_id'niz.
+- invoice_id(string): Kesilen faturanın yanıttan dönen invoice_id parametresi.
+- invoice_uuid(string): Kesilen faturanın yanıttan dönen invoice_uuid parametresi.
+
+
+```
+https://wegs.dev/V1/sendinvoiceread/YOUR_CLIENT_ID/YOUR_INVOICE_ID}/YOUR_INVOICE_UUID/pdf
+```
+
 ## Vergi Muafiyet Sebebi (Baştaki Kodları İle Beraber Gönderilmelidir. Orn; 101 - İhracat İstisnası)
 ```json
 101 - İhracat İstisnası

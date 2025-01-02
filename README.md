@@ -121,7 +121,7 @@ POST https://wegs.dev/V3/fastorder
           ]
         }
     ],
-    "specialArea":[{"salesChannel":"perakende"}],
+    "specialArea":[{"salesChannel":"trendyol"}],
     "taxExemption": "301 - 11/1-a Mal İhracatı",
     "billDate":"05-08-2024",
     "billTime":"10:10:24",

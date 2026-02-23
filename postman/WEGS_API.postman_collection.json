@@ -1,0 +1,130 @@
+{
+  "info": {
+    "_postman_id": "4cbdb2ec-bf8c-4a86-b86a-5f89a73a9abf",
+    "name": "WEGS API",
+    "description": "WEGS API servis entegrasyonu icin Postman koleksiyonu.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Fast Order - Create Sale/Invoice",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "client_id",
+            "value": "{{client_id}}",
+            "type": "text"
+          },
+          {
+            "key": "api_key",
+            "value": "{{api_key}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"Action\": {\n    \"type\": \"create\"\n  },\n  \"Cari\": {\n    \"phone\": \"5456571256\",\n    \"tag\": \"\",\n    \"mail\": \"example@mail.com\",\n    \"customer_title\": \"Ornek Musteri\",\n    \"cari_code\": \"\",\n    \"cari_group\": \"Wegs Musterileri\",\n    \"tcvkn\": \"11111111111\",\n    \"vd\": \"\",\n    \"billing_address\": \"Address\",\n    \"delivery_address\": \"Address\",\n    \"city\": \"City\",\n    \"district\": \"District\",\n    \"country\": \"TR\",\n    \"note\": \"\",\n    \"post_code\": \"20150\"\n  },\n  \"Urun\": [\n    {\n      \"barcode\": \"\",\n      \"stock_code\": \"Custom\",\n      \"product_name\": \"SIA Custom Metal\",\n      \"stock_tracking\": 0,\n      \"currency_type\": \"TRY\",\n      \"tax\": 10,\n      \"price_1\": 2000,\n      \"unit_type\": \"Adet\",\n      \"quantity\": 1,\n      \"store_id\": \"\",\n      \"product_description\": \"\",\n      \"specialArea\": [\n        {\n          \"item_name\": null,\n          \"item_value\": null\n        }\n      ]\n    }\n  ],\n  \"specialArea\": [\n    {\n      \"salesChannel\": \"trendyol\"\n    }\n  ],\n  \"taxExemption\": null,\n  \"billDate\": \"05-08-2024\",\n  \"billTime\": \"10:10:24\",\n  \"testInvoice\": 1,\n  \"makeInvoice\": 1,\n  \"isRefund\": 0,\n  \"refundBillId\": \"\",\n  \"refundBillDate\": \"\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/V3/fastorder",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "V3",
+            "fastorder"
+          ]
+        },
+        "description": "Siparis olusturur. makeInvoice=1 ise fatura keser."
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status code is 200', function () {",
+              "  pm.response.to.have.status(200);",
+              "});",
+              "",
+              "try {",
+              "  var jsonData = pm.response.json();",
+              "  if (jsonData && jsonData.invoice) {",
+              "    if (jsonData.invoice.invoice_id) {",
+              "      pm.collectionVariables.set('invoice_id', jsonData.invoice.invoice_id);",
+              "    }",
+              "    if (jsonData.invoice.invoice_uuid) {",
+              "      pm.collectionVariables.set('invoice_uuid', jsonData.invoice.invoice_uuid);",
+              "    }",
+              "  }",
+              "} catch (e) {}"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Invoice PDF Read",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "client_id",
+            "value": "{{client_id}}",
+            "type": "text"
+          },
+          {
+            "key": "api_key",
+            "value": "{{api_key}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/V1/sendinvoiceread/{{client_id}}/{{invoice_id}}/{{invoice_uuid}}/pdf",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "V1",
+            "sendinvoiceread",
+            "{{client_id}}",
+            "{{invoice_id}}",
+            "{{invoice_uuid}}",
+            "pdf"
+          ]
+        },
+        "description": "Olusan faturanin PDF ciktisini alir."
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://wegs.dev"
+    },
+    {
+      "key": "client_id",
+      "value": "YOUR_CLIENT_ID"
+    },
+    {
+      "key": "api_key",
+      "value": "YOUR_API_KEY"
+    },
+    {
+      "key": "invoice_id",
+      "value": "FT02024000000010"
+    },
+    {
+      "key": "invoice_uuid",
+      "value": "40708075-6F6C-4C6B-8AF8-19DC17EAACD7"
+    }
+  ]
+}
